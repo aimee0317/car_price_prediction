@@ -250,4 +250,3 @@ dependencies:
     - typer==0.4.0
     - uritemplate==3.0.1
     - vega-datasets==0.9.0
-prefix: /Users/ameliatang/opt/miniconda3
