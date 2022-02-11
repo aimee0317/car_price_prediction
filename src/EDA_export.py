@@ -28,7 +28,7 @@ def main(plot1_path, plot2_path, plot3_path):
   
     plot1 = target_distribution_plot(data)
     plot2 = price_by_brand(data)
-    plot3 = price_year(data)
+    plot3 = price_year_brand(data)
   
     save_plot(plot1, plot1_path, 4)
     save_plot(plot2, plot2_path, 4)
@@ -42,14 +42,15 @@ def target_distribution_plot(data):
     return plot1
   
 def price_by_brand(data):
-    plot2 = alt.Chart(data, title ="Scatter plot of Price vs. Year").mark_point().encode(
-        alt.X('year',scale=alt.Scale(zero=False)),
-        y='price')
+    plot2 = alt.Chart(data, title="Price Distribution by Brand").mark_boxplot().encode(
+      x='price',
+      y=alt.Y('brand'),
+      color='brand')
   
     return plot2
 
   
-def price_year(data):
+def price_year_brand(data):
     plot3 = alt.Chart(data).mark_boxplot().encode(
         y='price',
         x=alt.X('year', scale=alt.Scale(zero=False)),
