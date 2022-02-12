@@ -1,13 +1,14 @@
 # Author: Amelia Tang
 
-"""Reads train_data csv file, perform scoring on multiple classification models, 
-and then select the results in a csv file. Then, it will run hyperprameter optimization
-on the best model and saves the model in a pickle format
+"""Trains the models and saves the training and validation scores to a csv file. Saves the final model's shap plot as png.
+Saves the test scores of the tuned model to a csv file.
 
-Usage: models_selection.py --csv_path=<csv_path>
+Usage: models_selection.py --csv_path=<csv_path> --shap_path=<shap_path> --score_path=<score_path>
 
 Options:
---csv_path=<csv_path>   path and file name of the model_selection scores csv file
+--csv_path=<csv_path>   path and file name of the model scores csv file
+--shap_path=<shap_path> path and filename of the shap plot of the tuned model 
+--score_path=<score_path> path and filename of the test scores csv file
 """
 
 import os
@@ -36,12 +37,17 @@ from docopt import docopt
 opt = docopt(__doc__)
 
 
-def main(csv_path):
+def main(csv_path, shap_path, score_path):
     # read train data
     X_train = pd.read_csv("data/raw/X_train.csv", parse_dates=['year'])
     X_train['year'] = X_train['year'].dt.year
     y_train = pd.read_csv("data/raw/y_train.csv")
     train_df = X_train.join(y_train.set_index('carID'), on = "carID")
+    
+    # read test data 
+    X_test = pd.read_csv("data/raw/X_test.csv", parse_dates=['year'])
+    X_test['year'] = X_test['year'].dt.year
+    y_test = pd.read_csv("data/raw/y_test.csv")
   
     # separate X and y
     X_train, y_train = train_df.drop(columns="price"), train_df["price"]
@@ -56,6 +62,14 @@ def main(csv_path):
     except:
         os.makedirs(os.path.dirname(csv_path))
         open(csv_path, "wb").write(results.content)
+        
+    # test score
+    test_score = tuned_model(preprocessor, train_df, X_train, y_train, X_test, y_test, shap_path)
+    try:
+        test_score.to_csv(score_path, encoding="utf-8")
+    except:
+        os.makedirs(os.path.dirname(score_path))
+        open(score_path, "wb").write(test_score.content)
 
 
 def preprocess(train_df):
@@ -157,5 +171,58 @@ def generate_scores(preprocessor, X_train, y_train):
     return pd.DataFrame(results)
 
 
+def tuned_model(preprocessor, train_df, X_train, y_train, X_test, y_test, shap_path):
+  preprocessor.fit(X_train)
+  pipe_lr = make_pipeline(
+    preprocessor, Ridge(random_state=123)
+  )
+  
+  drop_features = ["carID"]
+  categorical_features = ["brand", "model", "transmission", "fuelType"]
+  ordinal_features = ["year"]
+  target = "price"
+  numeric_features = list(
+      set(train_df.columns)
+      - set(drop_features)
+      - set(categorical_features)
+      - set(ordinal_features)
+      - set([target])
+    )
+  
+  feature_names = (
+    numeric_features
+    + list(
+        pipe_lr.named_steps["columntransformer"]
+        .named_transformers_["onehotencoder"]
+        .get_feature_names_out()
+    )
+    + ordinal_features)
+    
+  X_train_encode = pd.DataFrame(
+    data=preprocessor.transform(X_train).toarray(),
+    columns=feature_names,
+    index=X_train.index
+    )
+  
+  tuned_pipe_catboost = make_pipeline(
+    preprocessor, CatBoostRegressor(random_state=123, max_depth = 8, verbose = 0)
+  )
+  
+  # Generate shap plot and save the plot 
+  tuned_pipe_catboost.fit(X_train, y_train)
+  catboost_explainer = shap.TreeExplainer(tuned_pipe_catboost.named_steps["catboostregressor"])
+  train_catboost_shap_values = catboost_explainer.shap_values(X_train_encode)
+  
+  shap.summary_plot(train_catboost_shap_values, X_train_encode, show=False)
+  plt.savefig(shap_path, bbox_inches='tight')
+  
+  
+  y_predict = tuned_pipe_catboost.predict(X_test)
+  R_squared = r2_score(y_test['price'], y_predict)
+  Root_mean_squared_error = np.sqrt(mean_squared_error(y_test['price'], y_predict))
+  data = [[R_squared, Root_mean_squared_error]]
+  return pd.DataFrame(data, columns = ['R_squared', 'Root mean squared error'])
+  
+
 if __name__ == "__main__":
-    main(opt["--csv_path"])
+    main(opt["--csv_path"], opt["--shap_path"], opt["--score_path"])
