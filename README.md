@@ -49,9 +49,9 @@ the root directory of the project:
 ## Dependencies
 
 A complete list of dependencies is available [here](https://github.com/aimee0317/car_price_prediction/blob/main/car_env.yaml).
-<br>- Python 3.9.7 and Python packages: <br>- docopt==0.6.1 <br>-
-pandas==1.3.3 <br>- numpy==1.21.2 <br>- altair_saver=0.5.0 <br>-
-altair=4.1.0 <br>- scikit-learn=1.0
+<br>- Python 3.9.10 and Python packages: <br>- docopt==0.6.1 <br>-
+pandas==1.4.0 <br>- numpy==1.21.5 <br>- altair_saver=0.5.0 <br>-
+altair=4.1.0 <br>- scikit-learn=1.0.2 <br>- catboost=1.0.4
 
 
 ## Replicating the analysis using Docker
