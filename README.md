@@ -68,11 +68,14 @@ run the following command:
 
 ## References 
 Anna Veronika Dorogush, Andrey Gulin, Vasily Ershov. 2018. “CatBoost: Gradient Boosting with Categorical Features Support.” "https://arxiv.org/abs/1810.11363".
+
 Caldwell, Miriam. 2021. Buying a New Car Vs. Buying a Used Car: Which Should You Choose? the balance. https://www.thebalance.com/buying-a-new-car-or-used-car-2385961.
 
 Harris, Charles R., K. Jarrod Millman, Stéfan J van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020. “Array Programming with NumPy.” Nature 585: 357–62. https://doi.org/10.1038/s41586-020-2649-2.
 
 McKinney, Wes et al. 2010. “Data Structures for Statistical Computing in Python.” In Proceedings of the 9th Python in Science Conference, 445:51–56. Austin, TX.
 Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, et al. 2011. “Scikit-Learn: Machine Learning in Python.” Journal of Machine Learning Research 12 (Oct): 2825–30.
+
+Pudaruth, Sameerchand. 2014. “Predicting the Price of Used Cars Using Machine Learning Techniques.” Int. J. Inf. Comput. Technol 4 (7): 753–64.
 
 Van Rossum, Guido, and Fred L. Drake. 2009. Python 3 Reference Manual. Scotts Valley, CA: CreateSpace.
