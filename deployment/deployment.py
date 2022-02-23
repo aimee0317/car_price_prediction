@@ -27,7 +27,7 @@ def predict():
     data_unseen = pd.DataFrame([final], columns = cols)
     prediction = model.predict(data_unseen)
     prediction = int(prediction)
-    return render_template('home.html',pred='Expected price will be {}'.format(prediction))
+    return render_template('home.html',pred='Predicted used car price is {}'.format(prediction))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():

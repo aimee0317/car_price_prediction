@@ -12,6 +12,10 @@ The data set used in this project was a subset of the `100,00 UK Used Car Data s
 
 The final report can be found [here](https://htmlpreview.github.io/?https://github.com/aimee0317/car_price_prediction/blob/main/doc/car_price_prediction_report.html).
 
+## Model Deployment 
+
+Heroku: https://used-car-price-prediction-at.herokuapp.com/ 
+
 ## Usage
 
 ### Creating the environment
