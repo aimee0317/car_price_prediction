@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Insurance Bill</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Used Car Price Prediction</h1>
+
+     <!-- Form to enter new data for predictions  -->
+    <form action="{{ url_for('predict')}}"method="POST">
+      <input type="text" name="brand" placeholder="brand" required="required" /><br>
+    	<input type="text" name="model" placeholder="model" required="required" /><br>
+    	  <input type="number" name="year" placeholder="year" required="required" /><br>
+        <input type="text" name="transmission" placeholder="transmission" required="required" /><br>
+        <input type="number" name="mileage" placeholder="mileage" required="required" /><br>
+        <input type="text" name="fuelType" placeholder="fuelType" required="required" /><br>
+        <input type="number" name="tax" placeholder="tax" required="required" /><br>
+        <input type="number" name="mpg" placeholder="mpg" required="required" /><br>
+        <input type="number" name="engineSize" placeholder="engineSize" required="required" /><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{pred}}
+
+</body>
+</html>
