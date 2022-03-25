@@ -90,7 +90,7 @@ def price_by_brand(data):
 
   
 def price_year_brand(data):
-   """
+    """
     generate a faceted boxplot 
 
     Parameters
