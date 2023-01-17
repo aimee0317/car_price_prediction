@@ -2,7 +2,7 @@
 
 """Conduct hyperparameter tunining on the best model and save the final model in the pickle format. 
 
-Usage: final_model.py --model_path=<model_path>
+Usage: src/final_model.py --model_path=<model_path>
 
 Options:
 --model_path=<model_path>   path to save the final model in the pickle format
@@ -32,9 +32,9 @@ opt = docopt(__doc__)
 
 def main(model_path):
     # read train data
-    X_train = pd.read_csv("../data/raw/X_train.csv", parse_dates=['year'])
+    X_train = pd.read_csv("data/raw/X_train.csv", parse_dates=['year'])
     X_train['year'] = X_train['year'].dt.year
-    y_train = pd.read_csv("../data/raw/y_train.csv")
+    y_train = pd.read_csv("data/raw/y_train.csv")
     train_df = X_train.join(y_train.set_index('carID'), on="carID")
 
     # separate X and y
@@ -97,6 +97,7 @@ def final_model(train_df, X_train, y_train):
         random_state=123)
 
     final_model = best_model.fit(X_train, y_train)
+    # print(best_model.best_score_)
 
     return final_model
 
