@@ -4,7 +4,7 @@
 
 ## About
 
-It is attractive, at times, for us to buy used cars. The price and insurance cost of a used car is generally lower than a new one (Caldwell 2021). People who consider buying second-hand cars may want to know the reasonable prices and get more information on what factors contribute to the prices of used cars. Therefore, I built a regression model to predict the price of used cars using features relevant to evaluate the quality of used cars, such as the brand, model, year built, the size of the engine and the type of fuel used. I experimented on four popular algorithms for regression problems: linear regression with L2 regularization (`ridge`), linear regression with L1 regularization (`lasso`), `random forest` and `CatBoost`. I also utilized scikit-learn's `DummyRegressor` as a base case for comparison. After comparing the performances, I selected CatBoost as the best algorithm and conducted hyperparameter tuning. The tuned CatBoost model achieved an R-squared of 96.1%. 
+It is attractive, at times, for us to buy used cars. The price and insurance cost of a used car is generally lower than a new one (Caldwell 2021). People who consider buying second-hand cars may want to know the reasonable prices and get more information on what factors contribute to the prices of used cars. Therefore, I built a regression model to predict the price of used cars using features relevant to evaluate the quality of used cars, such as the brand, model, year built, the size of the engine and the type of fuel used. I experimented on four popular algorithms for regression problems: linear regression with L2 regularization (`ridge`), linear regression with L1 regularization (`lasso`), `random forest` and `XGBoost`. I also utilized scikit-learn's `DummyRegressor` as a base case for comparison. After comparing the performances, I selected CatBoost as the best algorithm and conducted hyperparameter tuning. The tuned XGBoost model achieved an R-squared of 95.8%. 
 
 The data set used in this project was a subset of the `100,00 UK Used Car Data set` on kaggle.com and available [here](https://www.kaggle.com/kukuroo3/used-car-price-dataset-competition-format). Each row of the data represents a used car and provides its ID, brand, model, year, transmission, mileage, fuel type, tax, miles per gallon and engine size. 
 
@@ -20,7 +20,7 @@ Heroku: https://used-car-price-prediction-at.herokuapp.com/
 
 ### Creating the environment
 
-`conda env create --file car_env.yaml`
+`conda env create --file car_price.yaml`
 
 Run the following command from the environment where you installed
 JupyterLab.
@@ -52,7 +52,7 @@ the root directory of the project:
 
 ## Dependencies
 
-A complete list of dependencies is available [here](https://github.com/aimee0317/car_price_prediction/blob/main/car_env.yaml).
+A complete list of dependencies is available [here](https://github.com/aimee0317/car_price_prediction/blob/main/car_price.yaml).
 <br>- Python 3.9.10 and Python packages: <br>- docopt==0.6.1 <br>-
 pandas==1.4.0 <br>- numpy==1.21.5 <br>- altair_saver=0.5.0 <br>-
 altair=4.1.0 <br>- scikit-learn=1.0.2 <br>- catboost=1.0.4
