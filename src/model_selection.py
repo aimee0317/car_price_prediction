@@ -2,7 +2,7 @@
 
 """Trains the models and saves the training and validation scores to a csv file. 
 
-Usage: model_selection.py --csv_path=<csv_path> 
+Usage: src/model_selection.py --csv_path=<csv_path> 
 
 Options:
 --csv_path=<csv_path>   path and file name of the model scores csv file
