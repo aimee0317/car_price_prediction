@@ -37,7 +37,7 @@ def main(test_x, test_y, model_path, csv_path):
     # Make test score data frame
     scores_df = pd.DataFrame(
         {'Neg_RMSE': [Neg_RMSE],
-         'R_sqaured': [r2]}
+         'R_squared': [r2]}
     )
 
     # Save test scores to csv
