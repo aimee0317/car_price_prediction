@@ -70,6 +70,11 @@ run the following command:
 
 `docker-compose run --rm report-env make -C //home//xxx//work clean`
 
+
+## Makefile dependency diagram 
+![](Makefile.png)
+
+
 ## References 
 Anna Veronika Dorogush, Andrey Gulin, Vasily Ershov. 2018. “CatBoost: Gradient Boosting with Categorical Features Support.” "https://arxiv.org/abs/1810.11363".
 

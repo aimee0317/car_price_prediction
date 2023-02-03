@@ -1,0 +1,31 @@
+digraph G {
+n2[label="all", color="red"];
+n3[label="doc/car_price_prediction_report.Rmd", color="red"];
+n10[label="results/final_model.pickle", color="green"];
+n8[label="results/model_selection.csv", color="green"];
+n6[label="results/price_by_brand.svg", color="green"];
+n7[label="results/price_year_brand.svg", color="green"];
+n12[label="results/shap.svg", color="green"];
+n4[label="results/target_distribution_plot.svg", color="green"];
+n14[label="results/test_scores.csv", color="green"];
+n5[label="src/EDA_export.py", color="green"];
+n11[label="src/final_model.py", color="green"];
+n9[label="src/model_selection.py", color="green"];
+n13[label="src/shap_plot.py", color="green"];
+n15[label="src/test_result.py", color="green"];
+n3 -> n2 ; 
+n10 -> n3 ; 
+n8 -> n3 ; 
+n6 -> n3 ; 
+n7 -> n3 ; 
+n12 -> n3 ; 
+n4 -> n3 ; 
+n14 -> n3 ; 
+n11 -> n10 ; 
+n9 -> n8 ; 
+n5 -> n6 ; 
+n5 -> n7 ; 
+n13 -> n12 ; 
+n5 -> n4 ; 
+n15 -> n14 ; 
+}
