@@ -6,7 +6,7 @@
 
 It is attractive, at times, for us to buy used cars. The price and insurance cost of a used car is generally lower than a new one (Caldwell 2021). People who consider buying second-hand cars may want to know the reasonable prices and get more information on what factors contribute to the prices of used cars. Therefore, I built a regression model to predict the price of used cars using features relevant to evaluate the quality of used cars, such as the brand, model, year built, the size of the engine and the type of fuel used. I experimented on four popular algorithms for regression problems: linear regression with L2 regularization (`ridge`), linear regression with L1 regularization (`lasso`), `random forest` and `XGBoost`. I also utilized scikit-learn's `DummyRegressor` as a base case for comparison. After comparing the performances, I selected `XGBoost` as the best algorithm and conducted hyperparameter tuning. The tuned XGBoost model achieved an R-squared of 95.8%. 
 
-The data set used in this project was a subset of the `100,00 UK Used Car Data set` on kaggle.com and available [here](https://www.kaggle.com/kukuroo3/used-car-price-dataset-competition-format). Each row of the data represents a used car and provides its ID, brand, model, year, transmission, mileage, fuel type, tax, miles per gallon and engine size. 
+The data set used in this project was a subset of the `100,000 UK Used Car Data set` on kaggle.com and available [here](https://www.kaggle.com/kukuroo3/used-car-price-dataset-competition-format). Each row of the data represents a used car and provides its ID, brand, model, year, transmission, mileage, fuel type, tax, miles per gallon and engine size. 
 
 ## Report
 
@@ -53,9 +53,8 @@ the root directory of the project:
 ## Dependencies
 
 A complete list of dependencies is available [here](https://github.com/aimee0317/car_price_prediction/blob/main/car_price.yaml).
-<br>- Python 3.9.10 and Python packages: <br>- docopt==0.6.1 <br>-
-pandas==1.4.0 <br>- numpy==1.21.5 <br>- altair_saver=0.5.0 <br>-
-altair=4.1.0 <br>- scikit-learn=1.0.2 <br>- catboost=1.0.4
+<br>- Python 3.10.8 and Python packages: <br>- docopt=0.6.2 <br>-
+altair=4.2.0 <br>- altair_data_server=0.4.1 <br>- scikit-learn=1.2.0 <br>- xgboost=1.7.1
 
 
 ## Replicating the analysis using Docker
