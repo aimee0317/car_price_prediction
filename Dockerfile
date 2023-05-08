@@ -2,6 +2,54 @@ FROM jupyter/minimal-notebook
 
 USER root
 
+# R pre-requisites
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    fonts-dejavu \
+    unixodbc \
+    unixodbc-dev \
+    r-cran-rodbc \
+    gfortran \
+    gcc && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+USER ${NB_UID}
+
+# R packages including IRKernel which gets installed globally.
+# r-e1071: dependency of the caret R package
+RUN mamba install --quiet --yes \
+    'r-base=4.1' \
+    'r-caret' \
+    'r-crayon' \
+    'r-devtools' \
+    'r-e1071' \
+    'r-hexbin' \
+    'r-htmltools' \
+    'r-htmlwidgets' \
+    'r-irkernel' \
+    'r-rcurl' \
+    'r-knitr' \
+    'r-rodbc' \
+    'unixodbc' && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+# These packages are not easy to install under arm
+# hadolint ignore=SC2039
+RUN set -x && \
+    arch=$(uname -m) && \
+    if [ "${arch}" == "x86_64" ]; then \
+    mamba install --quiet --yes \
+    'r-rmarkdown' \
+    'r-tidymodels' \
+    'r-tidyverse' && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"; \
+    fi;
+
+
 RUN conda install --quiet --y \ 
     _py-xgboost-mutex \
     altair \ 
@@ -205,7 +253,9 @@ RUN conda install --quiet --y \
     zlib \ 
     zstd 
     
-RUN npm install -g vega-lite
-    
-    
-    
+# Install dependancy for altair to save png files
+RUN npm install -g npm vega vega-cli vega-lite canvas -f
+
+
+# Install R table graphics for final report
+RUN conda install r-kableextra
