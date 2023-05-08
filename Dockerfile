@@ -1,3 +1,5 @@
+# Author: Amelia Tang 
+
 FROM jupyter/minimal-notebook
 
 USER root
