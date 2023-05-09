@@ -1,3 +1,5 @@
+# Author: Amelia Tang 
+# Adapted from : https://github.com/flor14/example-ga-file-dockerhub/blob/main/.github/workflows/publish_docker_image.yml
 name: Publish Dockerfile on DockerHub
 on: 
   push: 
