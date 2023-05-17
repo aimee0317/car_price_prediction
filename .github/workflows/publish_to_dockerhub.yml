@@ -1,3 +1,4 @@
+# Author: Amelia Tang 
 name: Publish Dockerfile on DockerHub
 on: 
   push: 
@@ -9,11 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@master
       with:
         fetch-depth: '0'
     - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.61.0
+      uses: anothrNick/github-tag-action@1.52.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
@@ -27,15 +28,15 @@ jobs:
       with:
         tag_name: ${{ steps.bump.outputs.new_tag }}
         release_name: ${{ steps.bump.outputs.new_tag }}
-        body: 
+        body: |
           Changes in this Release
           - Rebuilt Docker image and published to DockerHub with new tag
         draft: false
         prerelease: false
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-GitHub-Action@v5 # could be replace by docker/build-push-action@v2 
       with:
-        name: aimee0317/car-price-prediction # change this to your DockerHub username and repository
+        name: roanraina/diabetes-prediction # CHANGE THIS to your DockerHub username and repository!
         username: ${{ secrets.DOCKER_USERNAME }} # you need to add your Docker username to this GitHub repo as a secret
         password: ${{ secrets.DOCKER_PASSWORD }} # you need to add your Docker password to this GitHub repo as a secret
         tags: "latest,${{ steps.bump.outputs.new_tag }}"
