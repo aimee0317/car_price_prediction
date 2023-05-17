@@ -5,15 +5,15 @@ FROM jupyter/minimal-notebook
 USER root
 
 # R pre-requisites
-RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends \
+RUN sudo apt-get update --yes && \
+    sudo apt-get install --yes --no-install-recommends \
     fonts-dejavu \
     unixodbc \
     unixodbc-dev \
     r-cran-rodbc \
     gfortran \
     gcc && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
 
 USER ${NB_UID}
 
