@@ -1,5 +1,4 @@
 # Author: Amelia Tang 
-# Date: May 9, 2023
 
 FROM jupyter/minimal-notebook
 
@@ -33,25 +32,13 @@ RUN mamba install --quiet --yes \
     'r-rcurl' \
     'r-knitr' \
     'r-rodbc' \
-    'unixodbc' && \
-    mamba clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-
-# These packages are not easy to install under arm
-# hadolint ignore=SC2039
-RUN set -x && \
-    arch=$(uname -m) && \
-    if [ "${arch}" == "x86_64" ]; then \
-    mamba install --quiet --yes \
+    'unixodbc' \
     'r-rmarkdown' \
     'r-tidymodels' \
     'r-tidyverse' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"; \
-    fi;
-
+    fix-permissions "/home/${NB_USER}"
 
 RUN conda install --quiet --y \ 
     _py-xgboost-mutex \
@@ -254,11 +241,8 @@ RUN conda install --quiet --y \
     zeromq \ 
     zipp \ 
     zlib \ 
-    zstd 
+    zstd \
+    r-kableextra 
     
 # Install dependancy for altair to save png files
-RUN npm install -g npm vega vega-cli vega-lite canvas -f
-
-
-# Install R table graphics for final report
-RUN conda install r-kableextra
+RUN npm install -g npm vega vega-lite 
