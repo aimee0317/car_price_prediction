@@ -14,7 +14,10 @@ The final report can be found [here](https://htmlpreview.github.io/?https://gith
 
 ## Model Deployment 
 
-Heroku: https://used-car-price-prediction-at.herokuapp.com/ 
+<br>**Heroku**: https://used-car-price-prediction-at.herokuapp.com/ (NOTE: Link disabled because Heroku no longer offers a free tier plan in 2023. See the deployment files in https://github.com/aimee0317/car_price_prediction/tree/main/deployment/Heroku)
+<br>**AWS EC2**: TBU 
+<br>**Microsoft Azure**: https://car-price-prediction.azurewebsites.net/
+(Azure deployment Github repository: https://github.com/aimee0317/car_price_azure_deployment)
 
 ## Usage
 
@@ -75,8 +78,6 @@ run the following command:
 
 
 ## References 
-Anna Veronika Dorogush, Andrey Gulin, Vasily Ershov. 2018. “CatBoost: Gradient Boosting with Categorical Features Support.” "https://arxiv.org/abs/1810.11363".
-
 Caldwell, Miriam. 2021. Buying a New Car Vs. Buying a Used Car: Which Should You Choose? the balance. https://www.thebalance.com/buying-a-new-car-or-used-car-2385961.
 
 Harris, Charles R., K. Jarrod Millman, Stéfan J van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020. “Array Programming with NumPy.” Nature 585: 357–62. https://doi.org/10.1038/s41586-020-2649-2.
