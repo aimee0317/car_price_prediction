@@ -17,14 +17,14 @@ The final report can be found [here](https://htmlpreview.github.io/?https://gith
 <br>**Heroku**: https://used-car-price-prediction-at.herokuapp.com/ (NOTE: Link disabled because Heroku no longer offers a free tier plan in 2023. See the deployment files in https://github.com/aimee0317/car_price_prediction/tree/main/deployment/Heroku)
 <br>**Microsoft Azure**: https://car-price-prediction.azurewebsites.net/
 (Azure deployment Github repository: https://github.com/aimee0317/car_price_azure_deployment)
-<br>Demo on the app deployed on Azure
+<br>Demo on the Flask app deployed on Azure
 ![demo](https://github.com/aimee0317/car_price_prediction/blob/main/deployment/car-price-azure-app-compressed.gif)
 
 ## Usage
 
 ### Creating the environment
 
-`conda env create --file car_price.yaml`
+`conda env create --file car_price.yml`
 
 Run the following command from the environment where you installed
 JupyterLab.
