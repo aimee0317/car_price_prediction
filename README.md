@@ -31,12 +31,12 @@ JupyterLab.
 
 `conda install nb_conda_kernels`
 
-Chart Saving Using Altair 5.0 Version
+#### Chart Saving Using Altair 5.0 Version
 As of July 12, 2023, `altair_saver` does not yet support Altair 5. To save charts/plots created by Atair 5.0 in PNG and SVG formats and if you are a non-Apple Silicon computer user, you need to install the `vl-convert` package:
-`conda install -c conda-forge vl-convert-python`
-or 
-`pip install vl-convert-python`
-To read more about saving Atlair charts/plots, please see the official documentation [here](https://altair-viz.github.io/user_guide/saving_charts.html).
+<br>`conda install -c conda-forge vl-convert-python`
+<br>or 
+<br>`pip install vl-convert-python`
+<br> As of July 12, 2023, `vl-convert` does not support Apple Silicon architecture. To read more about saving Atlair charts/plots, please see the official documentation [here](https://altair-viz.github.io/user_guide/saving_charts.html).
 
 ### To replicate the analysis
 Clone this Github repository, install the dependencies, and run the 
