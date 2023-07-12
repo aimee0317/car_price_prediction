@@ -56,9 +56,9 @@ the root directory of the project:
 
 ## Dependencies
 
-A complete list of dependencies is available [here](https://github.com/aimee0317/car_price_prediction/blob/main/car_price.yaml).
-<br>- Python 3.10.8 and Python packages: <br>- docopt=0.6.2 <br>-
-altair=4.2.0 <br>- altair_data_server=0.4.1 <br>- scikit-learn=1.2.0 <br>- xgboost=1.7.1
+A complete list of dependencies is available [here](https://github.com/aimee0317/car_price_prediction/blob/main/car_price.yml).
+<br>- Python 3.10.12 and Python packages: <br>- docopt=0.6.2 <br>-
+altair=4.2.0 <br>- altair_data_server=0.4.1 <br>- scikit-learn=1.3.0 <br>- xgboost=1.7.1
 
 
 ## Replicating the analysis using Docker
