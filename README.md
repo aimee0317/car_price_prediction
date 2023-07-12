@@ -31,16 +31,12 @@ JupyterLab.
 
 `conda install nb_conda_kernels`
 
-If you are a windows user, run the following command inside the newly
-created environment to install vega-lite.
-
-`npm install -g vega vega-cli vega-lite canvas`
-
-For M1 mac users, make sure you are using the `x86` version of conda and
-not the `arm64` version. See
-[here](https://github.com/conda-forge/miniforge#miniforge3) and
-[here](https://github.com/mwidjaja1/DSOnMacARM/blob/main/README.md) for
-more info.
+Chart Saving Using Altair 5.0 Version
+As of July 12, 2023, `altair_saver` does not yet support Altair 5. To save charts/plots created by Atair 5.0 in PNG and SVG formats and if you are a non-Apple Silicon computer user, you need to install the `vl-convert` package:
+`conda install -c conda-forge vl-convert-python`
+or 
+`pip install vl-convert-python`
+To read more about saving Atlair charts/plots, please see the official documentation [here](https://altair-viz.github.io/user_guide/saving_charts.html).
 
 ### To replicate the analysis
 Clone this Github repository, install the dependencies, and run the 
@@ -53,6 +49,8 @@ and report, run the following commands at the command line/terminal from
 the root directory of the project:
 
     make clean
+
+Note: Due to the recent frequent update of the Altair package, I no longer include saving the EDA graphs/plots in the makefile. This part of the analysis is not reproducible using this makefile. 
 
 ## Dependencies
 
