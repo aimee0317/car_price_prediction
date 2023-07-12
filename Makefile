@@ -7,10 +7,6 @@
 
 all : doc/car_price_prediction_report.Rmd
 
-# Create EDA graphs 
-results/target_distribution_plot.svg results/price_by_brand.svg	results/price_year_brand.svg: src/EDA_export.py
-	python src/EDA_export.py --plot1_path=results/target_distribution_plot.svg --plot2_path=results/price_by_brand.svg --plot3_path=results/price_year_brand.svg
-
 # Model selection and scores 
 results/model_selection.csv : src/model_selection.py 
 	python src/model_selection.py --csv_path=results/model_selection.csv
@@ -25,18 +21,18 @@ results/shap.svg : src/shap_plot.py
 	
 # Generate the test scores 
 results/test_scores.csv : src/test_result.py 
-	python src/test_result.py --test_x=data/raw/X_test.csv --test_y=data/raw/y_test.csv --model_path=deployment/final_model.pickle --csv_path=results/test_scores.csv
+	python src/test_result.py --test_x=data/raw/X_test.csv --test_y=data/raw/y_test.csv --model_path=results/final_model.pickle --csv_path=results/test_scores.csv
 
 # write the report
 doc/car_price_prediction_report.Rmd : results/target_distribution_plot.svg results/price_by_brand.svg results/price_year_brand.svg results/model_selection.csv results/final_model.pickle results/shap.svg results/test_scores.csv      
 	Rscript -e "rmarkdown::render('doc/car_price_prediction_report.Rmd', output_format = 'html_document')"
 
 # Clean the created files
-clean: clean_eda clean_selection clean_model clean_shap clean_test
-clean_eda : 
-	rm -rf results/target_distribution_plot.svg
-	rm -rf results/price_by_brand.svg 
-	rm -rf results/price_year_brand.svg
+clean: clean_selection clean_model clean_shap clean_test
+#clean_eda : 
+#	rm -rf results/target_distribution_plot.svg
+#	rm -rf results/price_by_brand.svg 
+#	rm -rf results/price_year_brand.svg
 
 clean_selection : 
 	rm -rf results/model_selection.csv 
