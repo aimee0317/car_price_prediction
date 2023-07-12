@@ -24,18 +24,26 @@ The final report can be found [here](https://htmlpreview.github.io/?https://gith
 
 ### Creating the environment
 
-`conda env create --file car_price.yml`
+```
+conda env create --file car_price.yml
+```
 
 Run the following command from the environment where you installed
 JupyterLab.
 
-`conda install nb_conda_kernels`
+```
+conda install nb_conda_kernels
+```
 
 #### Chart Saving Using Altair 5.0 Version
 As of July 12, 2023, `altair_saver` does not yet support Altair 5. To save charts/plots created by Atair 5.0 in PNG and SVG formats and if you are a non-Apple Silicon computer user, you need to install the `vl-convert` package:
-<br>`conda install -c conda-forge vl-convert-python`
-<br>or 
-<br>`pip install vl-convert-python`
+```
+conda install -c conda-forge vl-convert-python
+```
+or 
+```
+pip install vl-convert-python
+```
 <br> As of July 12, 2023, `vl-convert` does not support Apple Silicon architecture. To read more about saving Atlair charts/plots, please see the official documentation [here](https://altair-viz.github.io/user_guide/saving_charts.html).
 
 ### To replicate the analysis
@@ -64,12 +72,16 @@ If you would like to replicate the analysis using Docker, follow the steps below
 
 From the root of this project, run the following command to replicate the analysis:
 
-`docker-compose run --rm report-env make -C //home//xxx//work all`
+```
+docker-compose run --rm report-env make -C //home//xxx//work all
+```
 
 To reset the project to the original state, and delete all result files and report, 
 run the following command:
 
-`docker-compose run --rm report-env make -C //home//xxx//work clean`
+```
+docker-compose run --rm report-env make -C //home//xxx//work clean
+```
 
 
 ## Makefile dependency diagram 
