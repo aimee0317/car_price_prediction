@@ -2,6 +2,8 @@
 
 -   Author: Amelia Tang 
 
+![](https://github.com/aimee0317/car_price_prediction/actions/workflows/publish_to_dockerhub.yml/badge.svg)
+
 ## About
 
 It is attractive, at times, for us to buy used cars. The price and insurance cost of a used car is generally lower than a new one (Caldwell 2021). People who consider buying second-hand cars may want to know the reasonable prices and get more information on what factors contribute to the prices of used cars. Therefore, I built a regression model to predict the price of used cars using features relevant to evaluate the quality of used cars, such as the brand, model, year built, the size of the engine and the type of fuel used. I experimented on four popular algorithms for regression problems: linear regression with L2 regularization (`ridge`), linear regression with L1 regularization (`lasso`), `random forest` and `XGBoost`. I also utilized scikit-learn's `DummyRegressor` as a base case for comparison. After comparing the performances, I selected `XGBoost` as the best algorithm and conducted hyperparameter tuning. The tuned XGBoost model achieved an R-squared of 95.8%. 
