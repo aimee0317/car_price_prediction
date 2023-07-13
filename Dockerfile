@@ -1,4 +1,5 @@
 # Author: Amelia Tang 
+# Project: Car price prediction
 
 FROM jupyter/minimal-notebook
 
