@@ -36,7 +36,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-GitHub-Action@v5 # could be replace by docker/build-push-action@v2 
       with:
-        name: roanraina/diabetes-prediction # CHANGE THIS to your DockerHub username and repository!
+        name: aimee0317/car-price-prediction # CHANGE THIS to your DockerHub username and repository!
         username: ${{ secrets.DOCKER_USERNAME }} # you need to add your Docker username to this GitHub repo as a secret
         password: ${{ secrets.DOCKER_PASSWORD }} # you need to add your Docker password to this GitHub repo as a secret
         tags: "latest,${{ steps.bump.outputs.new_tag }}"
