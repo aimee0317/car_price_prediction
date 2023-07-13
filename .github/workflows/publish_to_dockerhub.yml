@@ -1,4 +1,3 @@
-# Author: Amelia Tang 
 name: Publish Dockerfile on DockerHub
 on: 
   push: 
