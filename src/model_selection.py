@@ -9,10 +9,8 @@ Options:
 """
 
 import os
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import altair as alt
 from sklearn.compose import make_column_transformer
 from sklearn.dummy import DummyRegressor
 from sklearn.ensemble import RandomForestRegressor
