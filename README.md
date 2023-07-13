@@ -73,14 +73,14 @@ If you would like to replicate the analysis using Docker, follow the steps below
 From the root of this project, run the following command to replicate the analysis:
 
 ```
-docker-compose run --rm report-env make -C //home//xxx//work all
+docker-compose run --rm car-env make -C //home//jovyan//work all
 ```
 
 To reset the project to the original state, and delete all result files and report, 
 run the following command:
 
 ```
-docker-compose run --rm report-env make -C //home//xxx//work clean
+docker-compose run --rm car-env make -C //home//jovyan//work clean
 ```
 
 
